@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class LinkedListDeque<T> {
     private class Node {
         private T item;
@@ -24,6 +22,7 @@ public class LinkedListDeque<T> {
         this.size = 0;
     }
 
+    /*
     // Constructor: deep copy
     public LinkedListDeque(LinkedListDeque<T> other) {
         this.sentinel = new Node(null, null, null);
@@ -37,6 +36,7 @@ public class LinkedListDeque<T> {
             p = p.next;
         }
     }
+     */
 
     // Add Function
     public void addFirst(T item) {
@@ -102,7 +102,7 @@ public class LinkedListDeque<T> {
             return null;
         }
 
-        Node p = this.sentinel;
+        Node p = this.sentinel.next;
 
         for (int i = 0; i < index; ++i) {
             p = p.next;
@@ -116,14 +116,13 @@ public class LinkedListDeque<T> {
             return null;
         }
 
-        return travel(sentinel, index);
+        return travel(sentinel.next, index);
     }
 
     private T travel(Node p, int index) {
         if (index == 0) {
             return p.item;
         }
-        return travel(p.next, index-1);
+        return travel(p.next, index - 1);
     }
-
 }

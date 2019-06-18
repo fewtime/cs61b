@@ -14,6 +14,7 @@ public class ArrayDeque<T> {
         this.nextLast = 1;
     }
 
+    /*
     public ArrayDeque(int capacity) {
         this.items = (T[]) new Object[capacity];
         this.size = 0;
@@ -31,6 +32,7 @@ public class ArrayDeque<T> {
             this.items[i] = other.get(i);
         }
     }
+     */
 
     public boolean isEmpty() {
         return (this.size() == 0);
