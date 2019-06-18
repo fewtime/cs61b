@@ -1,3 +1,5 @@
+import javax.naming.LinkLoopException;
+
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {
 	
@@ -19,7 +21,7 @@ public class LinkedListDequeTest {
 		return true;
 	}
 
-	/* Prints a nice message based on whether a test passed. 
+	/* Prints a nice message based on whether a test passed.
 	 * The \n means newline. */
 	public static void printTestStatus(boolean passed) {
 		if (passed) {
@@ -36,7 +38,6 @@ public class LinkedListDequeTest {
 	public static void addIsEmptySizeTest() {
 		System.out.println("Running add/isEmpty/Size test.");
 		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
 		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -58,7 +59,6 @@ public class LinkedListDequeTest {
 		lld1.printDeque();
 
 		printTestStatus(passed);
-		*/
 	}
 
 	/** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
@@ -67,7 +67,6 @@ public class LinkedListDequeTest {
 		System.out.println("Running add/remove test.");
 
 		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -80,13 +79,49 @@ public class LinkedListDequeTest {
 		// should be empty 
 		passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
+		lld1.addLast(100);
+		lld1.addFirst(200);
+
+		passed = checkSize(1, lld1.size()) && passed;
+
 		printTestStatus(passed);
-		*/
+	}
+
+	public static void deepCopyTest() {
+		LinkedListDeque<String> source = new LinkedListDeque<String>();
+		source.addLast("apple");
+		source.addFirst("banana");
+		source.addLast("cake");
+
+		source.printDeque();
+
+		LinkedListDeque<String> target = new LinkedListDeque<String>(source);
+
+		target.printDeque();
+    }
+
+	public static void getterTest() {
+		LinkedListDeque<String> source = new LinkedListDeque<String>();
+		source.addLast("apple");
+		source.addFirst("banana");
+		source.addLast("cake");
+		source.printDeque();
+
+		System.out.println(source.get(1));
+		System.out.println(source.get(2));
+		System.out.println(source.get(3));
+
+		System.out.println(source.getRecursive(1));
+		System.out.println(source.getRecursive(2));
+		System.out.println(source.getRecursive(3));
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
-		addIsEmptySizeTest();
-		addRemoveTest();
+		// addIsEmptySizeTest();
+		// addRemoveTest();
+		// deepCopyTest();
+		getterTest();
 	}
-} 
+
+}
