@@ -29,24 +29,20 @@ public class TestArrayDequeGold {
         actualList.addFirst(random);
         assertEquals("addFirst(" + random + ")",
                 expectedList.get(0), actualList.get(0));
-        System.out.println("addFirst(" + random + ")");
 
         random = StdRandom.uniform(100);
         expectedList.addLast(random);
         actualList.addLast(random);
         assertEquals("addLast(" + random + ")",
                 expectedList.get(1), actualList.get(1));
-        System.out.println("addLast(" + random + ")");
 
         int expected = expectedList.removeFirst();
         int actual = actualList.removeFirst();
         assertEquals("removeFirst()", expected, actual);
-        System.out.println("removeFirst()");
 
         expected = expectedList.removeLast();
         actual = actualList.removeLast();
         assertEquals("removeLast()", expected, actual);
-        System.out.println("removeLast()");
     }
 
     private void testAddFirst() {
