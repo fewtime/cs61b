@@ -266,11 +266,11 @@ public class IntList {
         }
 
         IntList res = new IntList(A.first, null);
+        A = A.rest;
 
-        while (A.rest != null) {
+        while (A != null) {
+            res = new IntList(A.first, res);
             A = A.rest;
-            IntList tmp = new IntList(A.first, res);
-            res = tmp;
         }
 
         return res;
