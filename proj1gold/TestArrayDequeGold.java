@@ -12,37 +12,32 @@ public class TestArrayDequeGold {
 
     @Test
     public void testArrayDeque() {
-//        // addFirst
-//        testAddFirst();
-//        // addLast
-//        testAddLast();
-//        // removeFirst
-//        testRemoveFirst();
-//        // removeLast
-//        testRemoveLast();
+        StudentArrayDeque<Integer> sad = new StudentArrayDeque<>();
+        ArrayDequeSolution<Integer> ads = new ArrayDequeSolution<>();
+        String message = "\n";
 
-        ArrayDequeSolution<Integer> expectedList = new ArrayDequeSolution<>();
-        StudentArrayDeque<Integer> actualList = new StudentArrayDeque<>();
-
-        int random = StdRandom.uniform(100);
-        expectedList.addFirst(random);
-        actualList.addFirst(random);
-        assertEquals("addFirst(" + random + ")",
-                expectedList.get(0), actualList.get(0));
-
-        random = StdRandom.uniform(100);
-        expectedList.addLast(random);
-        actualList.addLast(random);
-        assertEquals("addLast(" + random + ")",
-                expectedList.get(1), actualList.get(1));
-
-        int expected = expectedList.removeFirst();
-        int actual = actualList.removeFirst();
-        assertEquals("removeFirst()", expected, actual);
-
-        expected = expectedList.removeLast();
-        actual = actualList.removeLast();
-        assertEquals("removeLast()", expected, actual);
+        while (true) {
+            int rand = StdRandom.uniform(10000);
+            if (rand < 2500) {
+                sad.addFirst(rand);
+                ads.addFirst(rand);
+                message = message + "addFirst(" + rand + ")\n";
+            } else if (rand < 5000){
+                sad.addLast(rand);
+                ads.addLast(rand);
+                message = message + "addLast(" + rand + ")\n";
+            } else if ((rand < 7500) && (!sad.isEmpty())) {
+                Integer actual = sad.removeFirst();
+                Integer expected = ads.removeFirst();
+                message = message + "removeFirst()\n";
+                assertEquals(message, expected, actual);
+            } else if (!sad.isEmpty()){
+                Integer actual = sad.removeLast();
+                Integer expected = ads.removeLast();
+                message = message + "removeLast()\n";
+                assertEquals(message, expected, actual);
+            }
+        }
     }
 
     private void testAddFirst() {
