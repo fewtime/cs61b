@@ -265,15 +265,16 @@ public class IntList {
             return null;
         }
 
-        IntList res = new IntList(A.first, null);
-        A = A.rest;
-
-        while (A != null) {
-            res = new IntList(A.first, res);
-            A = A.rest;
+        IntList ans = null;
+        IntList p = A;
+        while (p != null) {
+            IntList rest = p.rest;
+            p.rest = ans;
+            ans = p;
+            p = rest;
         }
 
-        return res;
+        return ans;
     }
 }
 
